@@ -1,5 +1,7 @@
 'use strict'
 
+const table = document.querySelector('.content').innerHTML = `<table border="1" cellpadding="10" cellspacing="0" style="border-collapse: collapse" class = "table"></table>`;
+
 function randnBM() { 
     let u = 0, v = 0; 
     while (u === 0) u = Math.random(); 
@@ -14,9 +16,11 @@ function getObj(num = 9) {
         obj.hasOwnProperty(prop) ? obj[prop]++ : obj[prop] = 1;
     }
     for (let key in obj) {
-        console.log(`| ${key} : ${obj[key]} |`);
-    } 
-    console.log(obj);
+        let row = document.createElement('tr');
+        row.innerHTML = `<td>${key}</td><td>${obj[key]}</td>`;
+        document.querySelector('.table').appendChild(row);
+
+    }
 }
 
 getObj();
